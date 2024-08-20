@@ -1,3 +1,3 @@
 # Ohjelmisto 1 kurssin koodiesimerkit
 
-Täällähän niitä
+Opettajien github-tunnukset: UllaSe ja mattpe
