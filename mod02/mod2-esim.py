@@ -1,4 +1,5 @@
 import math
+import random
 
 # Syötteen lukeminen ja sijoittaminen muuttujaan
 name = input("Anna nimesi: ")
@@ -31,3 +32,7 @@ print(f"Nimi: {name}, Ikä: {age}, Pituus: {height:.2f} metriä.")
 
 # luetaan piin likiarvon math-paketista (import-lauseet aina tiedoston alkuun)
 print(math.pi)
+
+# satunnaisen kokonaisluvun arpominen väliltä 1-6
+random_number = random.randint(1, 6)
+print(f"Satunnainen luku 1-6: {random_number}")
