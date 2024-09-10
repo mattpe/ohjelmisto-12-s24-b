@@ -215,7 +215,22 @@ if nimi in oppilaat:
 oppilaat['Ulla'] = 22
 print(oppilaat)
 
+nimet = ["Viivi", "Ahmed"]
+numerot = ["050-1234567", "040-1112223"]
+#print(f"{nimet[0]}, numero: {numerot[0]}")
 
+yhteystiedot = {"Viivi": "050-1234567", "Ahmed": "040-1112223"}
+#print(f"Viivin numero: {yhteystiedot['Viivi']}")
+hakusana = input("Puhelinnumerohaku, anna nimi: ")
+# listojen avulla, selvitetään ensin oikea indeksi
+index = nimet.index(hakusana)
+print(f"{hakusana}, numero: {numerot[index]}")
+# sanakirjalla, hyödynnetään avainta
+print(f"{hakusana}, numero: {yhteystiedot[hakusana]}")
 
-
-
+# extra: moniulotteinen sanakirja
+yhteystiedot = {
+    "Viivi": {"puh": "050-1234567", "osoite": "pikkutie 15"},
+    "Ahmed": {"puh": "040-1112223", "osoite": "isotie 1"}
+}
+print(f"Viivin osoite {yhteystiedot['Viivi']['osoite']}")
