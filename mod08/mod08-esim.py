@@ -37,4 +37,3 @@ if cursor.rowcount > 0:
     print(f"Tulosrivejä yhteensä: {cursor.rowcount}")
 else:
     print("Ei tuloksia.")
-
