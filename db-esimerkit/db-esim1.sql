@@ -1,7 +1,13 @@
--- Luodaan paikallinen käyttäjä "python"
--- CREATE USER python@localhost IDENTIFIED BY 'salakala';
+-- Huom: Käyttäjät ja uudet tietokannat luodaan
+-- pääkäyttäjänä, eli 'root'-tunnuksella
 
--- Poistetaan tietokanta, jos en on jo olemassa
+-- Uuden käyttäjän luonti, ÄLÄ käytä henkilökohtaista salasanaa
+CREATE USER dbharkat@localhost IDENTIFIED BY 'salakala';
+-- Annetaan uudelle käyttäjälle rajatut oikeudet tietokantaan
+-- "ankkalinna", joka luodaan pari riviä alempana
+GRANT SELECT, INSERT, UPDATE ON ankkalinna.* TO dbharkat@localhost;
+
+-- Poistetaan tietokanta ennen uuden luontia, jos se on jo olemassa
 DROP DATABASE IF EXISTS ankkalinna;
 
 -- Luodaan ankkalinnatietokanta
