@@ -86,3 +86,46 @@ Laajennetaan yllä olevaa ohjelmaa ja tehdään sinne metodi jossa printataan ko
 
 k1.printtaa_tiedot()
 k2.printtaa_tiedot()
+
+'''
+Laajennetaan yllä olevaan Koira-luokka esimerkkiä niin että lisätään sinne uusi metodi.
+Metodi on funktio jota voidaan kutsua Olion ilmentymille. Eli jokainen koira-olio voi esim. haukkua 
+kutsumalla tätä metodia. Lisätään myös jokaiselle koiralle ihan oma haukkutyyli. 
+'''
+
+
+class Koira:
+
+    tehty = 0
+    # haukahdus oletusarbo mikäli sitä ei alusteta
+    def __init__(self, nimi, syntymävuosi, väri, koko, haukahdus='HAUHAUAHAUA'):
+        self.nimi = nimi
+        self.syntymävuosi = syntymävuosi
+        self.väri = väri
+        self.koko = koko
+        self.haukahdus = haukahdus
+        self.korvat = 'luppakorvat'
+        Koira.tehty = Koira.tehty + 1
+
+    def printtaa_tiedot(self):
+        print(f'Koira nimi on {self.nimi} ja syntymävuosi on {self.syntymävuosi}')
+        return
+
+    def hauku(self, kerrat):
+        print(f'Koiran nimi on {self.nimi} ja haukkuu näin monta kertaa: {kerrat}')
+        for i in range(kerrat):
+            print(self.haukahdus)
+        return
+
+k1 = Koira('Lissu', 2015, 'harmaa', 'iso', 'WOOOOF WOOOOFFF')
+k2 = Koira('Reko', 2016, 'ruskea', 'pieni', 'YIP yIP YIP')
+# tämän olion luonnista puuttuu haukahdus attribuutti, joten käyttää oletus
+k3 = Koira('Fifi', 2004, 'violetti', 'pieni')
+
+k1.hauku(5)
+k2.hauku(6)
+k3.hauku(1)
+
+print(f'Koiria on yhteensä {Koira.tehty}')
+
+
