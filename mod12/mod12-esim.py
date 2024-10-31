@@ -2,7 +2,7 @@ import requests
 
 def search_show(search_term):
     # HTTP GET https://api.tvmaze.com/search/shows?q=emmerdale
-    url = f"https://api.tvmaze.comkk/search/shows?q={search_term}"
+    url = f"https://api.tvmaze.com/search/shows?q={search_term}"
     # Käsitellään mahdolliset virheet verkkoyhteydessä.
     try:
         response = requests.get(url)
@@ -16,6 +16,7 @@ def search_show(search_term):
         print(f"HTTP-yhteysvirhe {response.status_code}")
         return
 
+    # Parsitaan json datasta Pythonin tietorakenne (lista jonka sisällä sanakirjoja ja listoja)
     response_body = response.json()
 
     if len(response_body) < 1:
