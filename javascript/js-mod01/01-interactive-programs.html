@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mod 01</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+    </style>
+    <!-- Mikäli annetaan suoraan head osioissa, muista defer -->
+    <script src="00.js" defer></script>
+
+</head>
+<body>
+
+    <h2>Hei opiskellaan javascript saloja</h2>
+    <div>Moi olen divi</div>
+    <p id="teksti" class="blue">Haluan muuttaa tätä tekstiä</p>
+
+<!-- juuri ennen body tägiä -->
+<script>
+  'use strict';
+
+  console.log('Moikka printtaan suoraan bodyn sisältä');
+  let name = 'Ulla';
+  // const on muuttumaton eli tämä ei ole mahdollista
+  // name = 'Anna';
+
+  const element = document.querySelector('#teksti');
+  console.log(element);
+
+  // string literal = merkkijono ' tai ""
+  let teksti = 'Moikka maailma';
+  element.innerHTML = teksti
+  element.style.color = 'red';
+
+  // template litral = muotoiltava lause
+  // PYTHONISSA: teksti = f'Moikka {name}'
+  const teksti1 = 'Kiva tavata ' + name;
+  const teksti2 = `Kiva tavata ${name}!`;
+  console.log(teksti1);
+
+  // consolen ja html dokumentin lisäksi voidaan printata alert avulla
+  //alert(teksti2);
+  name = prompt('Anna nimesi: ');
+  console.log('Let avulla name muuttuja saa uuden arvon: ', name);
+
+  // muuttujan tyyppejä voi tutkia, typeof
+  console.log(typeof name);
+  // javascript on loosely typed
+  // vaidetaan nyt string numeroksi
+  name = 15; // on nyt numero
+  console.log(typeof name);
+  name = true; // on nyt totuusarvo eli boolean
+  console.log(typeof name);
+
+  const taulukko = [0,2,4,5,6,7];
+  console.log(taulukko);
+
+  // ei onnistu
+  //taulukko = [3,4,5,6,7,7,]
+
+  // onnistuu
+  taulukko[0] = 10;
+  console.log(taulukko);
+
+</script>
+</body>
+</html>
