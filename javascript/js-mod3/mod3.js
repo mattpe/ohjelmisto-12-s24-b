@@ -35,6 +35,7 @@ const listContents = ['kynä', 'kumi', 'reppu', 'pulpetti'];
 const listDiv = document.querySelector('#list');
 
 // funktio jolla voi tulostaa taulukon sisällön ol-listaksi DOMiin
+// ottaa paramatetrina taulukon, jonka alkioista lista luodaan
 function renderList (items) {
     // tyhjennetää div ennen uuden ol-elementin lisäystä
     listDiv.innerHTML = '';
@@ -47,15 +48,69 @@ function renderList (items) {
     listDiv.append(olElement);
 }
 
-renderList(listContents);
-listContents.push('tietskari');
-const newItem = window.prompt("Lisää jotain listaan?")
-listContents.push(newItem);
-listContents.sort()
-renderList(listContents);
+//renderList(listContents);
+//listContents.push('tietskari');
 
 // BOM-rajapinta (window-olio)
 // luetaan selaimen "sijainti" (URL)
 window.console.log(window.location.href)
 // siirrytään johonkin toiseen osoitteeseen
 //window.location.href = 'https://www.google.fi';
+
+// Tapahtumankäsittely eli eventit
+const printButton = document.querySelector('#print');
+// asetetaan napille tapahtumankäsittelelijä click-eventille
+printButton.addEventListener('click', function (event) {
+    console.log('print & sort button clicked, event: ', event);
+    listContents.sort();
+    renderList(listContents);
+});
+// asioiden lisäys listalle
+const addButton = document.querySelector('#add');
+// asetetaan napille tapahtumankäsittelelijä click-eventille
+addButton.addEventListener('click', () => {
+    const newItem = window.prompt("Lisää jotain listaan?")
+    listContents.push(newItem);
+    renderList(listContents);
+});
+
+// Hiiritapahtumia
+document.addEventListener('mousemove', function (event) {
+    //console.log(event);
+    document.querySelector('#output').textContent = `Hiiren
+        osoittimen koordinaatit: ${event.clientX}, ${event.clientY}`;
+    // näytetään h1, kun hiiri menee riittävän alas dokumentilal
+    if (event.clientY > 300) {
+        h1Elem.classList.remove('hidden');
+    }
+});
+
+h1Elem.addEventListener('mouseenter', function (){
+    // piilotetaan elementti css avulla, kun hiiren osoitin menee sen päälle
+    h1Elem.classList.add('hidden');
+});
+
+// Näppiseventti "toggle" (h piilottaa ja näyttää koko sivun)
+const keyLog = [];
+let hidden = false;
+document.addEventListener('keypress', function (event) {
+    //console.log('näppäin: ', event.key);
+    keyLog.push(event.key);
+    console.log('logi', keyLog);
+    if (event.key === 'h') {
+        if (!hidden) {
+            document.querySelector('body').classList.add('hidden');
+        } else {
+            document.querySelector('body').classList.remove('hidden');
+        }
+        hidden = !hidden;
+    }
+});
+
+// Oletustapahtuma ja sen estäminen
+// estetään formin automaattinen lähetys (sivun päivitys)
+const form = document.querySelector('form');
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+    console.log(event);
+})
